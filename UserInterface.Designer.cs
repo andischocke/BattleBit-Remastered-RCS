@@ -67,6 +67,7 @@
             WeaponListBox.Name = "WeaponListBox";
             WeaponListBox.Size = new Size(120, 411);
             WeaponListBox.TabIndex = 1;
+            WeaponListBox.SelectedIndexChanged += WeaponListBox_SelectedIndexChanged;
             // 
             // GameGroupBox
             // 
@@ -177,6 +178,8 @@
             // VerticalRecoilNumericUpDown
             // 
             VerticalRecoilNumericUpDown.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            VerticalRecoilNumericUpDown.DecimalPlaces = 2;
+            VerticalRecoilNumericUpDown.Increment = new decimal(new int[] { 10, 0, 0, 131072 });
             VerticalRecoilNumericUpDown.Location = new Point(119, 71);
             VerticalRecoilNumericUpDown.Name = "VerticalRecoilNumericUpDown";
             VerticalRecoilNumericUpDown.Size = new Size(75, 23);
@@ -186,6 +189,7 @@
             // 
             FireRateNumericUpDown.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             FireRateNumericUpDown.Location = new Point(119, 42);
+            FireRateNumericUpDown.Maximum = new decimal(new int[] { 1200, 0, 0, 0 });
             FireRateNumericUpDown.Name = "FireRateNumericUpDown";
             FireRateNumericUpDown.Size = new Size(75, 23);
             FireRateNumericUpDown.TabIndex = 4;
@@ -262,6 +266,8 @@
             Controls.Add(WeaponGroupBox);
             Controls.Add(GameGroupBox);
             Controls.Add(WeaponListBox);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "UserInterface";
             Text = "BBR-RCS";
             GameGroupBox.ResumeLayout(false);
