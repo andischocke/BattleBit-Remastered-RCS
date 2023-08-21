@@ -11,7 +11,7 @@ namespace BattleBit_Remastered_RCS
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new UserInterfaceForm());
+            Application.Run(new UserInterface());
         }
     }
 }

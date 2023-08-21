@@ -1,6 +1,6 @@
 ﻿namespace BattleBit_Remastered_RCS
 {
-    partial class UserInterfaceForm
+    partial class UserInterface
     {
         /// <summary>
         ///  Required designer variable.
@@ -252,7 +252,7 @@
             ActivationCheckBox.TextAlign = ContentAlignment.MiddleCenter;
             ActivationCheckBox.UseVisualStyleBackColor = true;
             // 
-            // UserInterfaceForm
+            // UserInterface
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -262,7 +262,7 @@
             Controls.Add(WeaponGroupBox);
             Controls.Add(GameGroupBox);
             Controls.Add(WeaponListBox);
-            Name = "UserInterfaceForm";
+            Name = "UserInterface";
             Text = "BBR-RCS";
             GameGroupBox.ResumeLayout(false);
             GameGroupBox.PerformLayout();
