@@ -1,8 +1,8 @@
 namespace BattleBit_Remastered_RCS
 {
-    public partial class Form1 : Form
+    public partial class UserInterfaceForm : Form
     {
-        public Form1()
+        public UserInterfaceForm()
         {
             InitializeComponent();
         }
