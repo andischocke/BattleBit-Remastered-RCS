@@ -240,9 +240,11 @@
             // 
             SmoothingNumericUpDown.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             SmoothingNumericUpDown.Location = new Point(119, 42);
+            SmoothingNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             SmoothingNumericUpDown.Name = "SmoothingNumericUpDown";
             SmoothingNumericUpDown.Size = new Size(75, 23);
             SmoothingNumericUpDown.TabIndex = 6;
+            SmoothingNumericUpDown.Value = new decimal(new int[] { 6, 0, 0, 0 });
             // 
             // ActivationCheckBox
             // 
@@ -255,6 +257,7 @@
             ActivationCheckBox.Text = "Deactivated";
             ActivationCheckBox.TextAlign = ContentAlignment.MiddleCenter;
             ActivationCheckBox.UseVisualStyleBackColor = true;
+            ActivationCheckBox.CheckedChanged += ActivationCheckBox_CheckedChanged;
             // 
             // UserInterface
             // 

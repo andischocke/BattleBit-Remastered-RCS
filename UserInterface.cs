@@ -11,6 +11,8 @@ namespace BattleBit_Remastered_RCS
         {
             InitializeComponent();
             LoadGame();
+            Thread recoil = new(RecoilCompensation) { IsBackground = true };
+            recoil.Start();
         }
 
         private void LoadGame()
@@ -74,6 +76,7 @@ namespace BattleBit_Remastered_RCS
         }
         private void LoadWeapon()
         {
+            // Fill the user interface with the weapon data
             WeaponNameLabel.Text = CurrentWeapon.Name;
             FireRateNumericUpDown.Value = CurrentWeapon.FireRate;
             VerticalRecoilNumericUpDown.Value = (decimal)CurrentWeapon.VerticalRecoil;
@@ -83,6 +86,63 @@ namespace BattleBit_Remastered_RCS
         {
             CurrentWeapon = CurrentGame.Weapons[WeaponListBox.SelectedIndex];
             LoadWeapon();
+        }
+
+        private void ActivationCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            // If the ActivationCheckBox is checked
+            if (ActivationCheckBox.Checked)
+            {
+                ActivationCheckBox.Text = "Activated";
+                ActivationCheckBox.ForeColor = Color.Green;
+            }
+            else
+            {
+                ActivationCheckBox.Text = "Deactivated";
+                ActivationCheckBox.ForeColor = Color.Red;
+            }
+        }
+
+        // Recoil Compensation algorithm
+        private void RecoilCompensation()
+        {
+            float accumulatedVerticalRecoil = 0;
+            float accumulatedFireInterval = 0;
+            while (true)
+            {
+                // Adjust the vertical recoil based on the field of view and sensitivity
+                float adjustedFieldOfView = CurrentGame.FieldOfView.current / CurrentGame.FieldOfView.preset;
+                float adjustedSensitivity = CurrentGame.Sensitivity.current / CurrentGame.Sensitivity.preset;
+                float adjustedVerticalRecoil = CurrentWeapon.VerticalRecoil * 19.5f * adjustedFieldOfView / adjustedSensitivity;
+                // Apply smoothing to the recoil
+                adjustedVerticalRecoil = adjustedVerticalRecoil / (float)SmoothingNumericUpDown.Value;
+                // Convert fire rate which is in rounds per minute to fire interval which is the time between each round in milliseconds
+                float fireInterval = (60000f / CurrentWeapon.FireRate);
+                // Apply smoothing to the fire interval
+                fireInterval = fireInterval / (float)SmoothingNumericUpDown.Value;
+
+                // Only run the recoil compensation algorithm if the ActivationCheckBox is checked and the left mouse button and right mouse button are pressed
+                while (ActivationCheckBox.Checked && MouseHook.IsKeyPressed(Keys.LButton) && MouseHook.IsKeyPressed(Keys.RButton))
+                {
+                    // Add the adjusted vertical recoil to the accumulated vertical recoil from the previous loop
+                    accumulatedVerticalRecoil = accumulatedVerticalRecoil + adjustedVerticalRecoil;
+                    // Convert accumulate vertical recoil to the distance to move the mouse
+                    int distanceY = (int)(accumulatedVerticalRecoil + 0.5f);
+                    // Subtract the distance moved from the accumulated recoil
+                    accumulatedVerticalRecoil = accumulatedVerticalRecoil - distanceY;
+                    // Move the mouse
+                    MouseHook.RelativeMove(0, distanceY);
+
+                    // Add the fire interval to the accumulated fire interval from the previous loop
+                    accumulatedFireInterval = accumulatedFireInterval + fireInterval;
+                    // Convert fire interval to delay to sleep
+                    int integerDelay = (int)accumulatedFireInterval;
+                    // Subtract the delay from the accumulated fire interval
+                    accumulatedFireInterval = accumulatedFireInterval - integerDelay;
+                    // Sleep the thread
+                    Thread.Sleep(integerDelay);
+                }
+            }
         }
     }
 }

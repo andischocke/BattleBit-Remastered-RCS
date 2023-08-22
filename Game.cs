@@ -22,9 +22,9 @@
         // Properties
         public string Name { get; set; }
         public int FireRate { get; set; }
-        public double VerticalRecoil { get; set; }
+        public float VerticalRecoil { get; set; }
         // Constructor
-        public Weapon(string name, int fireRate, double verticalRecoil)
+        public Weapon(string name, int fireRate, float verticalRecoil)
         {
             Name = name;
             FireRate = fireRate;
