@@ -43,8 +43,6 @@
             FireRateNumericUpDown = new NumericUpDown();
             SettingsGroupBox = new GroupBox();
             SmoothingLabel = new Label();
-            RandomnessLabel = new Label();
-            RandomnessNumericUpDown = new NumericUpDown();
             SmoothingNumericUpDown = new NumericUpDown();
             ActivationCheckBox = new CheckBox();
             GameGroupBox.SuspendLayout();
@@ -54,7 +52,6 @@
             ((System.ComponentModel.ISupportInitialize)VerticalRecoilNumericUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)FireRateNumericUpDown).BeginInit();
             SettingsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)RandomnessNumericUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SmoothingNumericUpDown).BeginInit();
             SuspendLayout();
             // 
@@ -198,48 +195,27 @@
             // 
             SettingsGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             SettingsGroupBox.Controls.Add(SmoothingLabel);
-            SettingsGroupBox.Controls.Add(RandomnessLabel);
-            SettingsGroupBox.Controls.Add(RandomnessNumericUpDown);
             SettingsGroupBox.Controls.Add(SmoothingNumericUpDown);
             SettingsGroupBox.Location = new Point(147, 224);
             SettingsGroupBox.Name = "SettingsGroupBox";
-            SettingsGroupBox.Size = new Size(200, 100);
+            SettingsGroupBox.Size = new Size(200, 50);
             SettingsGroupBox.TabIndex = 0;
             SettingsGroupBox.TabStop = false;
             SettingsGroupBox.Text = "Settings";
             // 
             // SmoothingLabel
             // 
-            SmoothingLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             SmoothingLabel.AutoSize = true;
-            SmoothingLabel.Location = new Point(6, 44);
+            SmoothingLabel.Location = new Point(6, 24);
             SmoothingLabel.Name = "SmoothingLabel";
             SmoothingLabel.Size = new Size(66, 15);
             SmoothingLabel.TabIndex = 0;
             SmoothingLabel.Text = "Smoothing";
             // 
-            // RandomnessLabel
-            // 
-            RandomnessLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            RandomnessLabel.AutoSize = true;
-            RandomnessLabel.Location = new Point(6, 73);
-            RandomnessLabel.Name = "RandomnessLabel";
-            RandomnessLabel.Size = new Size(75, 15);
-            RandomnessLabel.TabIndex = 0;
-            RandomnessLabel.Text = "Randomness";
-            // 
-            // RandomnessNumericUpDown
-            // 
-            RandomnessNumericUpDown.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            RandomnessNumericUpDown.Location = new Point(119, 71);
-            RandomnessNumericUpDown.Name = "RandomnessNumericUpDown";
-            RandomnessNumericUpDown.Size = new Size(75, 23);
-            RandomnessNumericUpDown.TabIndex = 7;
-            // 
             // SmoothingNumericUpDown
             // 
-            SmoothingNumericUpDown.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            SmoothingNumericUpDown.Location = new Point(119, 42);
+            SmoothingNumericUpDown.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            SmoothingNumericUpDown.Location = new Point(119, 22);
             SmoothingNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             SmoothingNumericUpDown.Name = "SmoothingNumericUpDown";
             SmoothingNumericUpDown.Size = new Size(75, 23);
@@ -283,7 +259,6 @@
             ((System.ComponentModel.ISupportInitialize)FireRateNumericUpDown).EndInit();
             SettingsGroupBox.ResumeLayout(false);
             SettingsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)RandomnessNumericUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)SmoothingNumericUpDown).EndInit();
             ResumeLayout(false);
         }
@@ -305,8 +280,6 @@
         private NumericUpDown FireRateNumericUpDown;
         private GroupBox SettingsGroupBox;
         private Label SmoothingLabel;
-        private Label RandomnessLabel;
-        private NumericUpDown RandomnessNumericUpDown;
         private NumericUpDown SmoothingNumericUpDown;
         private CheckBox ActivationCheckBox;
     }

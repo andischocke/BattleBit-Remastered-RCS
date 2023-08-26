@@ -106,6 +106,7 @@ namespace BattleBit_Remastered_RCS
         // Recoil Compensation algorithm
         private void RecoilCompensation()
         {
+            Random random = new Random();
             float accumulatedVerticalRecoil = 0;
             float accumulatedFireInterval = 0;
             while (true)
@@ -128,10 +129,14 @@ namespace BattleBit_Remastered_RCS
                     accumulatedVerticalRecoil = accumulatedVerticalRecoil + adjustedVerticalRecoil;
                     // Convert accumulate vertical recoil to the distance to move the mouse
                     int distanceY = (int)(accumulatedVerticalRecoil + 0.5f);
+                    // Random Y axis movement has a 50% chance to move -2 or 2 pixels
+                    distanceY = distanceY + (random.NextDouble() < 0.5 ? random.Next(-2, 3) : 0);
                     // Subtract the distance moved from the accumulated recoil
                     accumulatedVerticalRecoil = accumulatedVerticalRecoil - distanceY;
+                    // Random X axis movement has a 25% chance to move -1 or 1 pixels
+                    int distanceX = random.NextDouble() < 0.25 ? random.Next(-1, 2) : 0;
                     // Move the mouse
-                    MouseHook.RelativeMove(0, distanceY);
+                    MouseHook.RelativeMove(distanceX, distanceY);
 
                     // Add the fire interval to the accumulated fire interval from the previous loop
                     accumulatedFireInterval = accumulatedFireInterval + fireInterval;
