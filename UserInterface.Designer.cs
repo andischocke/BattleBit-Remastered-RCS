@@ -226,6 +226,7 @@
             // 
             ActivationCheckBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             ActivationCheckBox.Appearance = Appearance.Button;
+            ActivationCheckBox.ForeColor = Color.Red;
             ActivationCheckBox.Location = new Point(147, 374);
             ActivationCheckBox.Name = "ActivationCheckBox";
             ActivationCheckBox.Size = new Size(200, 25);

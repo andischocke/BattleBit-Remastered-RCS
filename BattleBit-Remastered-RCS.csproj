@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
-	  <AssemblyName>BattleBit_Remastered_RCS</AssemblyName>
+    <AssemblyName>BattleBit_Remastered_RCS</AssemblyName>
     <RootNamespace>BattleBit_Remastered_RCS</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
